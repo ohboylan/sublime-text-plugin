@@ -525,7 +525,10 @@ def is_enabled(view: sublime.View, pos: int) -> bool:
     if not syntax_info:
         return False
 
-    return syntax_info['type'] == auto_mark
+    if syntax_info is not None:
+        return syntax_info['type'] == auto_mark
+    else:
+        return False
 
 
 def mark(editor: sublime.View, tracker: AbbreviationTracker):
